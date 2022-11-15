@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
         MainWindow.setStyleSheet(u"background: #222;\n"
-"font-family: Product Sans;")
+"font-family: JetBrainsMono Nerd Font;")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
