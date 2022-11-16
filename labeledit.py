@@ -30,19 +30,17 @@ class LabelEdit(QLabel):
 
     def replace_letter(self, letter):
         position = self.current_position
-        current_letter = letter
         final_text_letter = self.final_text_array[position]
-        if self.letter_is_correct(current_letter, final_text_letter):
+        if self.letter_is_correct(letter, final_text_letter):
             self.current_text_array[position] = f"<span style='color: green'>{letter}</span>"
         else:
-            self.current_text_array[position] = f"<span style='color: red'>{letter}</span>"
+            self.current_text_array[position] = f"<span style='color: red'>{final_text_letter}</span>"
         self.set_entry_text(self.array_to_str(self.current_text_array))
         self.current_position += 1
     
     def remove_letter(self):
         position = self.current_position - 1 
         self.current_text_array[position] = self.final_text_array[position]
-        print(self.final_text_array[position])
         self.set_entry_text(self.array_to_str(self.current_text_array))
         self.current_position -= 1
 
