@@ -20,6 +20,8 @@ class LineEdit(QLineEdit):
         letter = keyEvent
         if self.check_key(letter):
             self.replace_letter(letter.text())
+        elif (letter.key() == Qt.Key.Key_Space):
+            self.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.cursorPosition() > 0):
             self.remove_letter()
 
