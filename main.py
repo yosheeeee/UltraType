@@ -19,7 +19,6 @@ class Ultratype(QMainWindow):
         self.entry.final_text = 'The quick brown fox jumps over the lazy dog'
         self.entry.final_text_array = self.entry.str_to_array(self.entry.final_text)
         self.entry.current_text_array = self.entry.str_to_array(self.entry.final_text)
-        print(self.entry.current_text_array)
 
     def keyPressEvent(self, keyEvent):
         letter = keyEvent
