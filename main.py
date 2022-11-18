@@ -2,8 +2,7 @@
 import sys
 
 from design import Ui_MainWindow
-from labeledit import LabelEdit
-from PySide6.QtWidgets import QApplication, QMainWindow, QLineEdit, QLabel
+from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Qt
 
 class Ultratype(QMainWindow):
@@ -13,7 +12,7 @@ class Ultratype(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.temp = self.ui.lbl_temp
+        self.wpm = self.ui.lbl_wpm
         self.entry = self.ui.lbl_entry
 
         self.entry.final_text = 'The quick brown fox jumps over the lazy dog'
@@ -24,6 +23,7 @@ class Ultratype(QMainWindow):
         letter = keyEvent
         if self.entry.check_key(letter):
             self.entry.replace_letter(letter.text())
+            self.wpm.set_wpm(self.wpm.calculate_wpm(self.entry.current_position, self.entry.start_time))
         elif (letter.key() == Qt.Key.Key_Space):
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.entry.current_position > 0):
