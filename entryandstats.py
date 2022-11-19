@@ -1,4 +1,3 @@
-from asyncio import sleep
 from time import time
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel
@@ -6,12 +5,18 @@ from PySide6.QtWidgets import QLabel
 class LabelEdit(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.start_time = time()
         self.final_text = ''
         self.current_text_array = []
         self.final_text_array = []
         self.current_position = 0
         self.entered_symbols_counter = 0
+        self.missed_symbols_counter = 0
+        self.is_started = False
+        self.start_time = 0
+
+    def start(self):
+        self.start_time = time()
+        self.is_started = True
 
     @staticmethod
     def check_key(letter):
@@ -39,6 +44,7 @@ class LabelEdit(QLabel):
             self.current_text_array[position] = f"<span style='color: green'>{letter}</span>"
         else:
             self.current_text_array[position] = f"<span style='color: red'>{final_text_letter}</span>"
+            self.missed_symbols_counter += 1
         self.set_entry_text(self.array_to_str(self.current_text_array))
         self.entered_symbols_counter += 1
         self.current_position += 1
@@ -68,5 +74,16 @@ class LabelStat(QLabel):
         wpm = round(text_len / (time_elapsed / 60) / 5)
         return wpm
 
+    @staticmethod
+    def calculate_accuracy(entered_symbols, missed_symbols):
+        if entered_symbols > 0:
+            accuracy = round(100 - ((missed_symbols * 100) / entered_symbols))
+            return accuracy
+        else:
+            return 0
+
     def set_wpm(self, wpm):
         self.setText(f'WPM {wpm}')
+
+    def set_accuracy(self, accuracy):
+        self.setText(f'Accuracy {accuracy}%')

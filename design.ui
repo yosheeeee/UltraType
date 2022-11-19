@@ -82,7 +82,7 @@ font-weight: 500;</string>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="lbl_accuracy">
+         <widget class="LabelStat" name="lbl_accuracy">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
             <horstretch>0</horstretch>

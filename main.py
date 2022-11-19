@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import sys
+from time import sleep
+import threading
 
 from design import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
@@ -13,27 +15,44 @@ class Ultratype(QMainWindow):
         self.ui.setupUi(self)
 
         self.wpm = self.ui.lbl_wpm
+        self.accuracy = self.ui.lbl_accuracy
         self.entry = self.ui.lbl_entry
+        self.wpm_thread = threading.Thread(target=self.stats_thread)
 
-        self.entry.final_text = 'The quick brown fox jumps over the lazy dog'
-        self.entry.final_text_array = self.entry.str_to_array(self.entry.final_text)
-        self.entry.current_text_array = self.entry.str_to_array(self.entry.final_text)
+    def closeEvent(self, *args, **kwargs):
+            super(QMainWindow, self).closeEvent(*args, **kwargs)
+            self.wpm_thread.do_run = False
 
     def keyPressEvent(self, keyEvent):
+        if not(self.entry.is_started):
+            self.entry.start()
         letter = keyEvent
         if self.entry.check_key(letter):
             self.entry.replace_letter(letter.text())
-            self.wpm.set_wpm(self.wpm.calculate_wpm(self.entry.current_position, self.entry.start_time))
         elif (letter.key() == Qt.Key.Key_Space):
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.entry.current_position > 0):
             self.entry.remove_letter()
 
+    def set_test_text(self, text):
+        self.entry.final_text = text
+        self.entry.final_text_array = self.entry.str_to_array(self.entry.final_text)
+        self.entry.current_text_array = self.entry.str_to_array(self.entry.final_text)
+        self.entry.set_entry_text(text)
+
+    def stats_thread(self):
+        thread = threading.current_thread()
+        while getattr(thread, "do_run", True):
+            sleep(0.2)
+            self.wpm.set_wpm(self.wpm.calculate_wpm(self.entry.current_position, self.entry.start_time))
+            self.accuracy.set_accuracy(self.wpm.calculate_accuracy(self.entry.entered_symbols_counter, self.entry.missed_symbols_counter))
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     window = Ultratype()
-    window.entry.set_entry_text(window.entry.final_text)
     window.show()
-
+    window.set_test_text('dkfsfjaks dslkasdfsdf msdfnsdmfsf')
+    window.wpm_thread.start()
     sys.exit(app.exec())

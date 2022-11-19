@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addWidget(self.lbl_wpm)
 
-        self.lbl_accuracy = QLabel(self.centralwidget)
+        self.lbl_accuracy = LabelStat(self.centralwidget)
         self.lbl_accuracy.setObjectName(u"lbl_accuracy")
         sizePolicy1.setHeightForWidth(self.lbl_accuracy.sizePolicy().hasHeightForWidth())
         self.lbl_accuracy.setSizePolicy(sizePolicy1)
