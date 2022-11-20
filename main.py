@@ -6,6 +6,7 @@ import threading
 from design import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Qt
+import config
 
 class Ultratype(QMainWindow):
 
@@ -18,6 +19,12 @@ class Ultratype(QMainWindow):
         self.accuracy = self.ui.lbl_accuracy
         self.entry = self.ui.lbl_entry
         self.wpm_thread = threading.Thread(target=self.stats_thread)
+
+        # for btn in config.LETTER_BUTTONS:
+        #     getattr(self.ui, btn).clicked.connect(self.replace_letter)
+        #
+        # for btn in config.ACTION_BUTTONS:
+        #     getattr(self.ui, btn).clicked.connect(self.replace_letter)
 
     def closeEvent(self, *args, **kwargs):
             super(QMainWindow, self).closeEvent(*args, **kwargs)
@@ -33,6 +40,15 @@ class Ultratype(QMainWindow):
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.entry.current_position > 0):
             self.entry.remove_letter()
+
+    # def replace_letter(self):
+    #     btn = self.sender()
+    #     if not(self.entry.is_started):
+    #         self.entry.start()
+    #
+    #     if btn.objectName() in config.ACTION_BUTTONS:
+    #         if btn == self.ui.btn_space:
+    #             self.entry.replace_letter(' ')
 
     def set_test_text(self, text):
         self.entry.final_text = text
@@ -53,6 +69,6 @@ if __name__ == "__main__":
 
     window = Ultratype()
     window.show()
-    window.set_test_text('dkfsfjaks dslkasdfsdf msdfnsdmfsf')
+    window.set_test_text('привет пока ты красавчик вообще лютейший')
     window.wpm_thread.start()
     sys.exit(app.exec())
