@@ -18,13 +18,9 @@ class Ultratype(QMainWindow):
         self.wpm = self.ui.lbl_wpm
         self.accuracy = self.ui.lbl_accuracy
         self.entry = self.ui.lbl_entry
+        self.keyboard = self.ui.wt_keyboard
         self.wpm_thread = threading.Thread(target=self.stats_thread)
 
-        # for btn in config.LETTER_BUTTONS:
-        #     getattr(self.ui, btn).clicked.connect(self.replace_letter)
-        #
-        # for btn in config.ACTION_BUTTONS:
-        #     getattr(self.ui, btn).clicked.connect(self.replace_letter)
 
     def closeEvent(self, *args, **kwargs):
             super(QMainWindow, self).closeEvent(*args, **kwargs)
@@ -36,19 +32,17 @@ class Ultratype(QMainWindow):
         letter = keyEvent
         if self.entry.check_key(letter):
             self.entry.replace_letter(letter.text())
+        elif (letter.key() == Qt.Key.Key_Shift):
+            self.keyboard.set_keyboard_layout(self.ui, config.ENG_LETTER_BUTTONS['upper'])
         elif (letter.key() == Qt.Key.Key_Space):
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.entry.current_position > 0):
             self.entry.remove_letter()
 
-    # def replace_letter(self):
-    #     btn = self.sender()
-    #     if not(self.entry.is_started):
-    #         self.entry.start()
-    #
-    #     if btn.objectName() in config.ACTION_BUTTONS:
-    #         if btn == self.ui.btn_space:
-    #             self.entry.replace_letter(' ')
+    def keyReleaseEvent(self, keyEvent):
+        letter = keyEvent
+        if (letter.key() == Qt.Key.Key_Shift):
+            self.keyboard.set_keyboard_layout(self.ui, config.ENG_LETTER_BUTTONS['lower'])
 
     def set_test_text(self, text):
         self.entry.final_text = text
@@ -70,5 +64,6 @@ if __name__ == "__main__":
     window = Ultratype()
     window.show()
     window.set_test_text('привет пока ты красавчик вообще лютейший')
+    window.keyboard.current_keyboard_string = 'ENG_LETTER_BUTTONS'
     window.wpm_thread.start()
     sys.exit(app.exec())

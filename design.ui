@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1055</width>
-    <height>536</height>
+    <height>546</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -218,7 +218,7 @@ font-size: 16pt;</string>
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="wt_keyboard" native="true">
+        <widget class="Keyboard" name="wt_keyboard" native="true">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -800,7 +800,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_q">
+             <widget class="QPushButton" name="btn_1">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -834,7 +834,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_w">
+             <widget class="QPushButton" name="btn_2">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -868,7 +868,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_e">
+             <widget class="QPushButton" name="btn_3">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -902,7 +902,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_r">
+             <widget class="QPushButton" name="btn_4">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -936,7 +936,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_t">
+             <widget class="QPushButton" name="btn_5">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -970,7 +970,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_y">
+             <widget class="QPushButton" name="btn_6">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1004,7 +1004,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_u">
+             <widget class="QPushButton" name="btn_7">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1038,7 +1038,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_i">
+             <widget class="QPushButton" name="btn_8">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1072,7 +1072,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_o">
+             <widget class="QPushButton" name="btn_9">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1106,7 +1106,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_p">
+             <widget class="QPushButton" name="btn_10">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1140,7 +1140,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_openbracket">
+             <widget class="QPushButton" name="btn_11">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1174,7 +1174,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_closebracket">
+             <widget class="QPushButton" name="btn_12">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1283,7 +1283,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_a">
+             <widget class="QPushButton" name="btn_13">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1317,7 +1317,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_s">
+             <widget class="QPushButton" name="btn_14">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1351,7 +1351,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_d">
+             <widget class="QPushButton" name="btn_15">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1385,7 +1385,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_f">
+             <widget class="QPushButton" name="btn_16">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1419,7 +1419,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_g">
+             <widget class="QPushButton" name="btn_17">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1453,7 +1453,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_h">
+             <widget class="QPushButton" name="btn_18">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1487,7 +1487,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_j">
+             <widget class="QPushButton" name="btn_19">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1521,7 +1521,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_k">
+             <widget class="QPushButton" name="btn_20">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1555,7 +1555,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_l">
+             <widget class="QPushButton" name="btn_21">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1589,7 +1589,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_29">
+             <widget class="QPushButton" name="btn_22">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1623,7 +1623,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_28">
+             <widget class="QPushButton" name="btn_23">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1732,7 +1732,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_z">
+             <widget class="QPushButton" name="btn_24">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1766,7 +1766,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_x">
+             <widget class="QPushButton" name="btn_25">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1800,7 +1800,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_c">
+             <widget class="QPushButton" name="btn_26">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1834,7 +1834,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_v">
+             <widget class="QPushButton" name="btn_27">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1868,7 +1868,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_b">
+             <widget class="QPushButton" name="btn_28">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1902,7 +1902,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_n">
+             <widget class="QPushButton" name="btn_29">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1936,7 +1936,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="btn_m">
+             <widget class="QPushButton" name="btn_30">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1970,7 +1970,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_42">
+             <widget class="QPushButton" name="btn_31">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2004,7 +2004,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_41">
+             <widget class="QPushButton" name="btn_32">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2038,7 +2038,7 @@ font-size: 16pt;</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_64">
+             <widget class="QPushButton" name="btn_33">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2405,6 +2405,12 @@ font-size: 16pt;</string>
    <class>LabelStat</class>
    <extends>QLabel</extends>
    <header>entryandstats</header>
+  </customwidget>
+  <customwidget>
+   <class>Keyboard</class>
+   <extends>QWidget</extends>
+   <header>keyboard</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
