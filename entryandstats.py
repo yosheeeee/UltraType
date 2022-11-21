@@ -22,7 +22,17 @@ class LabelEdit(QLabel):
     def check_key(letter):
         return (letter.text().isalnum() or 
                 letter.key() == Qt.Key.Key_Colon or 
-                letter.key() == Qt.Key.Key_Semicolon)
+                letter.key() == Qt.Key.Key_Semicolon or
+                letter.key() == Qt.Key.Key_Comma or
+                letter.key() == Qt.Key.Key_Apostrophe or
+                letter.key() == Qt.Key.Key_Exclam or
+                letter.key() == Qt.Key.Key_Question or
+                letter.key() == Qt.Key.Key_BraceLeft or
+                letter.key() == Qt.Key.Key_BraceRight or
+                letter.key() == Qt.Key.Key_BracketLeft or
+                letter.key() == Qt.Key.Key_BracketRight or
+                letter.key() == Qt.Key.Key_QuoteDbl or
+                letter.key() == Qt.Key.Key_Period)
 
     @staticmethod
     def array_to_str(str):
