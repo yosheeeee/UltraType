@@ -6,14 +6,19 @@ import threading
 from design import Ui_MainWindow
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QFontDatabase
 import config
+
 
 class Ultratype(QMainWindow):
 
     def __init__(self):
-        super(Ultratype, self).__init__() 
+        super(Ultratype, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        QFontDatabase.addApplicationFont("fonts/ProductSans-Regular.ttf")
+        QFontDatabase.addApplicationFont("fonts/RobotoMono-Regular.ttf")
 
         self.wpm = self.ui.lbl_wpm
         self.accuracy = self.ui.lbl_accuracy
@@ -25,8 +30,8 @@ class Ultratype(QMainWindow):
         self.next_button_is_upper = None
 
     def closeEvent(self, *args, **kwargs):
-            super(QMainWindow, self).closeEvent(*args, **kwargs)
-            self.kill_threads()
+        super(QMainWindow, self).closeEvent(*args, **kwargs)
+        self.kill_threads()
 
     def kill_threads(self):
         self.stat_thread.do_run = False
@@ -39,13 +44,13 @@ class Ultratype(QMainWindow):
             return self.entry.current_position == len(self.entry.final_text_array)
 
     def get_current_button_id(self):
-            letter = self.entry.final_text_array[self.entry.current_position]
-            if letter == ' ':
-                return self.ui.btn_space
-            elif letter in self.current_layout['lower']:
-                return getattr(self.ui, config.KEYBOARD_BUTTONS[self.current_layout['lower'].find(letter)])
-            elif letter in self.current_layout['upper']:
-                return getattr(self.ui, config.KEYBOARD_BUTTONS[self.current_layout['upper'].find(letter)])
+        letter = self.entry.final_text_array[self.entry.current_position]
+        if letter == ' ':
+            return self.ui.btn_space
+        elif letter in self.current_layout['lower']:
+            return getattr(self.ui, config.KEYBOARD_BUTTONS[self.current_layout['lower'].find(letter)])
+        elif letter in self.current_layout['upper']:
+            return getattr(self.ui, config.KEYBOARD_BUTTONS[self.current_layout['upper'].find(letter)])
 
     def keyPressEvent(self, keyEvent):
         self.handle_key(keyEvent)
@@ -57,7 +62,8 @@ class Ultratype(QMainWindow):
                 self.entry.start()
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Shift):
-            self.keyboard.set_keyboard_layout(self.ui, config.ENG_LETTER_BUTTONS['upper'])
+            self.keyboard.set_keyboard_layout(
+                self.ui, config.ENG_LETTER_BUTTONS['upper'])
         elif (letter.key() == Qt.Key.Key_Space):
             self.entry.replace_letter(letter.text())
         elif (letter.key() == Qt.Key.Key_Backspace) and (self.entry.current_position > 0):
@@ -69,13 +75,16 @@ class Ultratype(QMainWindow):
     def keyReleaseEvent(self, keyEvent):
         letter = keyEvent
         if (letter.key() == Qt.Key.Key_Shift):
-            self.keyboard.set_keyboard_layout(self.ui, config.ENG_LETTER_BUTTONS['lower'])
+            self.keyboard.set_keyboard_layout(
+                self.ui, config.ENG_LETTER_BUTTONS['lower'])
         self.refresh_highlight()
 
     def set_test_text(self, text):
         self.entry.final_text = text
-        self.entry.final_text_array = self.entry.str_to_array(self.entry.final_text)
-        self.entry.current_text_array = self.entry.str_to_array(self.entry.final_text)
+        self.entry.final_text_array = self.entry.str_to_array(
+            self.entry.final_text)
+        self.entry.current_text_array = self.entry.str_to_array(
+            self.entry.final_text)
         self.entry.set_entry_text(text)
         self.highlighted_button = self.get_current_button_id()
 
@@ -83,8 +92,10 @@ class Ultratype(QMainWindow):
         thread = threading.current_thread()
         while getattr(thread, "do_run", True):
             sleep(0.1)
-            self.wpm.set_wpm(self.wpm.calculate_wpm(self.entry.current_position, self.entry.start_time))
-            self.accuracy.set_accuracy(self.wpm.calculate_accuracy(self.entry.entered_symbols_counter, self.entry.missed_symbols_counter))
+            self.wpm.set_wpm(self.wpm.calculate_wpm(
+                self.entry.current_position, self.entry.start_time))
+            self.accuracy.set_accuracy(self.wpm.calculate_accuracy(
+                self.entry.entered_symbols_counter, self.entry.missed_symbols_counter))
 
     def refresh_highlight(self):
         if len(self.entry.final_text_array) > self.entry.current_position:
@@ -102,7 +113,8 @@ if __name__ == "__main__":
 
     window = Ultratype()
     window.show()
-    window.set_test_text("CIsnotbetrayal. What you say or do doesn't matter; only feelings matter.")
+    window.set_test_text(
+        "CIsnotbetrayal. What you say or do doesn't matter; only feelings matter.")
     window.entry.set_underline_letter(0)
     window.stat_thread.start()
     window.refresh_highlight()
