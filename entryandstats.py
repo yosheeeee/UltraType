@@ -52,7 +52,8 @@ class LabelEdit(QLabel):
         if len(self.final_text_array) > position:
             final_text_letter = self.final_text_array[position]
             if self.letter_is_correct(letter, final_text_letter):
-                self.current_text_array[position] = f"<span style='color: green;'>{letter}</span>"
+                self.current_text_array[
+                    position] = f"<span style='color: green;'>{letter}</span>"
             else:
                 self.current_text_array[
                     position] = f"<span style='color: red'>{final_text_letter}</span>"
@@ -64,12 +65,14 @@ class LabelEdit(QLabel):
 
     def set_underline_letter(self, position):
         if (position < len(self.final_text_array)):
-            self.current_text_array[position] = f"<span style='text-decoration: underline !important;'>{self.final_text_array[position]}</span>"
+            self.current_text_array[
+                position] = f"<span style='text-decoration: underline !important;'>{self.final_text_array[position]}</span>"
             self.set_entry_text(self.array_to_str(self.current_text_array))
 
     def remove_underline_letter(self, position):
         if (position < len(self.final_text_array)):
-            self.current_text_array[position] = f"<span style='text-decoration: none;'>{self.final_text_array[position]}</span>"
+            self.current_text_array[
+                position] = f"<span style='text-decoration: none;'>{self.final_text_array[position]}</span>"
             self.set_entry_text(self.array_to_str(self.current_text_array))
 
     def remove_letter(self):
@@ -81,8 +84,6 @@ class LabelEdit(QLabel):
             self.set_entry_text(self.array_to_str(self.current_text_array))
             self.set_underline_letter(position)
             self.current_position -= 1
-        
-
 
     def get_entry_text(self):
         return (self.text())
