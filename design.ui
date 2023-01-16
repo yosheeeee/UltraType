@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1055</width>
-    <height>546</height>
+    <width>1044</width>
+    <height>618</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -63,6 +63,12 @@ QPushButton:pressed {
     <string notr="true">padding </string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
     <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QWidget" name="verticalWidget" native="true">
       <property name="sizePolicy">
@@ -70,6 +76,12 @@ QPushButton:pressed {
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>936</width>
+        <height>0</height>
+       </size>
       </property>
       <property name="maximumSize">
        <size>
@@ -111,13 +123,17 @@ QPushButton:pressed {
 background: transparent;
 font-size: 20pt;
 color:  #5D576B;
-font-weight: 400;</string>
+font-weight: 400;
+font-family: Roboto Mono;</string>
            </property>
            <property name="text">
-            <string>выаыв</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span&gt;выаыdsfsd&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -225,6 +241,12 @@ font-size: 16pt;</string>
          <layout class="QVBoxLayout" name="lt_keyboard">
           <property name="spacing">
            <number>9</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_8">

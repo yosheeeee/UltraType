@@ -11,7 +11,7 @@ import config
 class Ultratype(QMainWindow):
 
     def __init__(self):
-        super(Ultratype, self).__init__()
+        super(Ultratype, self).__init__() 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
@@ -22,6 +22,7 @@ class Ultratype(QMainWindow):
         self.stat_thread = threading.Thread(target=self.stats_thread)
         self.current_layout = config.ENG_LETTER_BUTTONS
         self.highlighted_button = None
+        self.next_button_is_upper = None
 
     def closeEvent(self, *args, **kwargs):
             super(QMainWindow, self).closeEvent(*args, **kwargs)
@@ -50,7 +51,6 @@ class Ultratype(QMainWindow):
         self.handle_key(keyEvent)
 
     def handle_key(self, keyEvent):
-        self.refresh_highlight()
         letter = keyEvent
         if self.entry.check_key(letter):
             if not(self.entry.is_started):
@@ -64,6 +64,7 @@ class Ultratype(QMainWindow):
             self.entry.remove_letter()
         if self.test_is_complete():
             self.kill_threads()
+        self.refresh_highlight()
 
     def keyReleaseEvent(self, keyEvent):
         letter = keyEvent
@@ -87,20 +88,22 @@ class Ultratype(QMainWindow):
 
     def refresh_highlight(self):
         if len(self.entry.final_text_array) > self.entry.current_position:
-            if self.current_letter_is_upper():
-                self.keyboard.highlight_button(self.ui.btn_lshift)
             self.keyboard.highlight_button(self.get_current_button_id())
             if self.highlighted_button != self.get_current_button_id():
-                self.keyboard.unhighlight_button(self.highlighted_button)
                 self.keyboard.unhighlight_button(self.ui.btn_lshift)
+                self.keyboard.unhighlight_button(self.highlighted_button)
                 self.highlighted_button = self.get_current_button_id()
+            if self.current_letter_is_upper():
+                self.keyboard.highlight_button(self.ui.btn_lshift)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
 
     window = Ultratype()
     window.show()
-    window.set_test_text("Confession is not betrayal. What you say or do doesn't matter; only feelings matter.")
+    window.set_test_text("CIsnotbetrayal. What you say or do doesn't matter; only feelings matter.")
+    window.entry.set_underline_letter(0)
     window.stat_thread.start()
     window.refresh_highlight()
     sys.exit(app.exec())

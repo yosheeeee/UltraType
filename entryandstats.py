@@ -2,6 +2,7 @@ from time import time
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QLabel
 
+
 class LabelEdit(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,8 +21,8 @@ class LabelEdit(QLabel):
 
     @staticmethod
     def check_key(letter):
-        return (letter.text().isalnum() or 
-                letter.key() == Qt.Key.Key_Colon or 
+        return (letter.text().isalnum() or
+                letter.key() == Qt.Key.Key_Colon or
                 letter.key() == Qt.Key.Key_Semicolon or
                 letter.key() == Qt.Key.Key_Comma or
                 letter.key() == Qt.Key.Key_Apostrophe or
@@ -46,27 +47,42 @@ class LabelEdit(QLabel):
     def letter_is_correct(letter, correct_letter):
         return letter == correct_letter
 
-
     def replace_letter(self, letter):
         position = self.current_position
         if len(self.final_text_array) > position:
             final_text_letter = self.final_text_array[position]
             if self.letter_is_correct(letter, final_text_letter):
-                self.current_text_array[position] = f"<span style='color: green'>{letter}</span>"
+                self.current_text_array[position] = f"<span style='color: green;'>{letter}</span>"
             else:
-                self.current_text_array[position] = f"<span style='color: red'>{final_text_letter}</span>"
+                self.current_text_array[
+                    position] = f"<span style='color: red'>{final_text_letter}</span>"
                 self.missed_symbols_counter += 1
             self.set_entry_text(self.array_to_str(self.current_text_array))
             self.entered_symbols_counter += 1
             self.current_position += 1
-    
+            self.set_underline_letter(self.current_position)
+
+    def set_underline_letter(self, position):
+        if (position < len(self.final_text_array)):
+            self.current_text_array[position] = f"<span style='text-decoration: underline !important;'>{self.final_text_array[position]}</span>"
+            self.set_entry_text(self.array_to_str(self.current_text_array))
+
+    def remove_underline_letter(self, position):
+        if (position < len(self.final_text_array)):
+            self.current_text_array[position] = f"<span style='text-decoration: none;'>{self.final_text_array[position]}</span>"
+            self.set_entry_text(self.array_to_str(self.current_text_array))
+
     def remove_letter(self):
         position = self.current_position
         if position > 0:
-            position -= 1 
+            self.remove_underline_letter(position)
+            position -= 1
             self.current_text_array[position] = self.final_text_array[position]
             self.set_entry_text(self.array_to_str(self.current_text_array))
+            self.set_underline_letter(position)
             self.current_position -= 1
+        
+
 
     def get_entry_text(self):
         return (self.text())
@@ -76,7 +92,8 @@ class LabelEdit(QLabel):
 
     def set_wpm_text(self, text):
         self.setText(str(text))
-    
+
+
 class LabelStat(QLabel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
