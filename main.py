@@ -33,16 +33,20 @@ class Ultratype(QMainWindow):
         super(QMainWindow, self).closeEvent(*args, **kwargs)
         self.kill_threads()
 
+    # Отключает thread вычисляющий WPM и точность набора
     def kill_threads(self):
         self.stat_thread.do_run = False
 
+    # Проверят в верхнем ли регистре находится текущий элемент (тот над которым курсор)
     def current_letter_is_upper(self):
         return self.entry.final_text_array[self.entry.current_position] in self.current_layout['upper']
 
+    # Проверяет закончен ли ввод текста
     def test_is_complete(self):
         if len(self.entry.final_text_array) > 0:
             return self.entry.current_position == len(self.entry.final_text_array)
 
+    # Возвращает id клавиши ввод которой нужно совершить пользователю 
     def get_current_button_id(self):
         letter = self.entry.final_text_array[self.entry.current_position]
         if letter == ' ':
@@ -52,9 +56,11 @@ class Ultratype(QMainWindow):
         elif letter in self.current_layout['upper']:
             return getattr(self.ui, config.KEYBOARD_BUTTONS[self.current_layout['upper'].find(letter)])
 
+    # Ивент срабатывающий при нажатии клавиши на физической клавиатуре
     def keyPressEvent(self, keyEvent):
         self.handle_key(keyEvent)
 
+    # Функция обрабатывающая нажатие клавиш
     def handle_key(self, keyEvent):
         letter = keyEvent
         if self.entry.check_key(letter):
@@ -72,6 +78,7 @@ class Ultratype(QMainWindow):
             self.kill_threads()
         self.refresh_highlight()
 
+    # Ивент срабатывающий при отпускании клавиши на физической клавиатуре
     def keyReleaseEvent(self, keyEvent):
         letter = keyEvent
         if (letter.key() == Qt.Key.Key_Shift):
@@ -79,6 +86,7 @@ class Ultratype(QMainWindow):
                 self.ui, config.ENG_LETTER_BUTTONS['lower'])
         self.refresh_highlight()
 
+    # Переменная задает текст, а так же нужные для работы программы переменные
     def set_test_text(self, text):
         self.entry.final_text = text
         self.entry.final_text_array = self.entry.str_to_array(
@@ -88,6 +96,7 @@ class Ultratype(QMainWindow):
         self.entry.set_entry_text(text)
         self.highlighted_button = self.get_current_button_id()
 
+    # Функция создает поток для работы статистики (wpm, точность)
     def stats_thread(self):
         thread = threading.current_thread()
         while getattr(thread, "do_run", True):
@@ -97,6 +106,7 @@ class Ultratype(QMainWindow):
             self.accuracy.set_accuracy(self.wpm.calculate_accuracy(
                 self.entry.entered_symbols_counter, self.entry.missed_symbols_counter))
 
+    # Функция обновляющая подсветку клавишь на виртуальной клавиатуре
     def refresh_highlight(self):
         if len(self.entry.final_text_array) > self.entry.current_position:
             self.keyboard.highlight_button(self.get_current_button_id())
