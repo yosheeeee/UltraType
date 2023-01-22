@@ -2,7 +2,9 @@ import random
 def GenerateLevel(n):
     letters='fjghdksla;\'tyrueiwoqp[]vnbcmx,z./'
     use_letters_len=0
-    if (n>=12):
+    if (n==15):
+        use_letters_len=n*2+3
+    elif (n>=12):
         use_letters_len=n*2+2
     elif(n>=5):
         use_letters_len=n*2+1
@@ -21,6 +23,6 @@ def GenerateLevel(n):
 print(GenerateLevel(1))
 print(GenerateLevel(2))
 print(GenerateLevel(5))
-print(GenerateLevel(12))
+print(GenerateLevel(15))
 
 
