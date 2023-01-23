@@ -20,9 +20,5 @@ def GenerateLevel(n):
         result.append(word)
     return ' '.join(result)
 
-print(GenerateLevel(1))
-print(GenerateLevel(2))
-print(GenerateLevel(5))
-print(GenerateLevel(15))
 
 
