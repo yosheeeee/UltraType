@@ -61,8 +61,11 @@ class LabelEdit(QLabel):
                 self.current_text_array[
                     position] = f"<span style='color: green;'>{letter}</span>"
             else:
-                self.current_text_array[
-                    position] = f"<span style='color: red'>{final_text_letter}</span>"
+                if (final_text_letter==' '):
+                    self.current_text_array[position]=f"<span style='text-decoration: underline !important; text-decoration-color:red !important;'>{final_text_letter}</span>"
+                else:
+                    self.current_text_array[
+                        position] = f"<span style='color: red'>{final_text_letter}</span>"
                 self.missed_symbols_counter += 1
             self.set_entry_text(self.array_to_str(self.current_text_array))
             self.entered_symbols_counter += 1

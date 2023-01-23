@@ -8,8 +8,8 @@ from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFontDatabase
 import config
-
-
+from GenerateLevel import GenerateLevel
+ 
 class Ultratype(QMainWindow):
 
     def __init__(self):
@@ -124,8 +124,10 @@ if __name__ == "__main__":
     window = Ultratype()
     window.show()
     window.set_test_text(
-        "CIsnotbetrayal. What you say or do doesn't matter; only feelings matter.")
+        GenerateLevel(1))
     window.entry.set_underline_letter(0)
     window.stat_thread.start()
     window.refresh_highlight()
     sys.exit(app.exec())
+
+# "CIsnotbetrayal. What you say or do doesn't matter; only feelings matter."
